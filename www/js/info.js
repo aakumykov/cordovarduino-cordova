@@ -18,6 +18,6 @@ var info = {
     },
     logHtml: function(msg){
         var log = $('#log');
-        log.html(log.html()+"<div>"+msg+"</div>\n");
+        log.html("<div>"+msg+"</div>\n"+log.html());
     }
 }

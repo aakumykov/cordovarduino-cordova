@@ -2,8 +2,8 @@
 
 var app = {
     touch: {
-        x: NaN,
-        y: NaN,
+        x: 0,
+        y: 0,
     },
 
     initialize: function() {
@@ -107,13 +107,29 @@ var app = {
             },
             100
         );
+
+        window.setInterval(
+            function(){
+                self.sendXY({ x: self.touch.x, y: self.touch.y });
+            },
+            1000
+        );
     },
 
     displayXY: function(arg){
         //info.console('displayXY('+arg.x+', '+arg.y+')');
         $('#clientX').html(arg.x);
         $('#clientY').html(arg.y);
-        serial.write(arg.x+'x'+arg.y);
+    },
+
+    sendXY: function(arg){
+        //var message = arg.x+'x'+arg.y;
+        var message = arg.x;
+        
+        //serial.write(arg.x+'x'+arg.y);
+        serial.write('1');
+        
+        info.msg('sendXY('+message+')');
     },
 };
 
