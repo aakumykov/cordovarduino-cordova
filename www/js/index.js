@@ -34,12 +34,13 @@ var app = {
                                         // if we received a \n, the message is complete, display it 
                                         if(view[i] == 13) {
                                             // check if the read rate correspond to the arduino serial print rate 
-                                            var now = new Date();
-                                            delta.innerText = now - lastRead;
-                                            lastRead = now;
+                                            // var now = new Date();
+                                            // delta.innerText = now - lastRead;
+                                            // lastRead = now;
+                                            
                                             // display the message 
                                             var value = parseInt(str);
-                                            pot.innerText = value;
+                                            info.msg(value);
                                             str = '';
                                         }
                                         // if not, concatenate with the begening of the message 
@@ -72,5 +73,29 @@ var app = {
         }
     }
 };
- 
+
+var info = {
+    msg: function(msg){
+        this.logConsole(msg);
+        this.logHtml(msg);
+    },
+    console: function(msg){
+        this.logConsole(msg);
+    },
+    error: function(msg){
+        var text = 'ERROR: '+msg;
+        this.logConsole(text);
+        this.logHtml(text);
+        alert(text);
+    },
+    // private
+    logConsole: function(msg){
+        console.log(msg);
+    },
+    logHtml: function(msg){
+        var log = $('#log');
+        log.html(log.html()+"<div>"+msg+"</div>\n");
+    }
+}
+
 app.initialize();
