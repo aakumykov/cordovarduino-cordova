@@ -1,13 +1,18 @@
 //'use strict'; // испытать
 
 var app = {
+    touch: {
+        x: NaN,
+        y: NaN,
+    },
+
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
     onDeviceReady: function() {
         this.initScreen();
-        this.initTouchEvents();
+        this.initTouch();
 
         var open = false;
         var str = '';
@@ -68,30 +73,40 @@ var app = {
         $('#area').height(window.innerHeight-100);
     },
 
-    initTouchEvents: function(){
+    initTouch: function(){
         var self = this;
 
         $(document.body).on('touchstart', function(ev){
-            var x = ev.touches[0].clientX;
-            var y = ev.touches[0].clientY;
-            
-            serial.write(x+'x'+y);
-            
-            self.displayXY({
-                x: x,
-                y: y,
-            });
+            var x = self.touch.x = ev.touches[0].clientX;
+            var y = self.touch.y = ev.touches[0].clientY;
+            info.console('touchstart('+x+','+y+')');
         });
+        $(document.body).on('touchend', function(ev){
+            var x = self.touch.x = ev.touches[0].clientX;
+            var y = self.touch.y = ev.touches[0].clientY;
+            info.console('touchend('+x+','+y+')');
+        });
+        $(document.body).on('touchmove', function(ev){
+            var x = self.touch.x = ev.touches[0].clientX;
+            var y = self.touch.y = ev.touches[0].clientY;
+            //info.console('touchmove('+x+','+y+')');
+        });
+
+        // window.setInterval(function(){
+        //     info.console(self.touch);
+        // }, 1000);
+
+        window.setInterval(function(){
+                self.displayXY({ x: self.touch.x, y: self.touch.y });
+            },
+            100
+        );
     },
 
     displayXY: function(arg){
-        info.console('displayXY('+arg.x+', '+arg.y+')');
-
-        var x = arg.x;
-        var y = arg.y;
-        
-        $('#clientX').html(x);
-        $('#clientY').html(y);
+        //info.console('displayXY('+arg.x+', '+arg.y+')');
+        $('#clientX').html(arg.x);
+        $('#clientY').html(arg.y);
     },
 };
 
