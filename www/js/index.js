@@ -3,6 +3,9 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
+        $('#log').width(window.innerWidth-50);
+        $('#log').height(window.innerHeight-50);
+
         var open = false;
         var str = '';
         var lastRead = new Date();
@@ -29,11 +32,6 @@ var app = {
                                     for(var i=0; i < view.length; i++) {
                                         // if we received a \n, the message is complete, display it 
                                         if(view[i] == 13) {
-                                            // check if the read rate correspond to the arduino serial print rate 
-                                            // var now = new Date();
-                                            // delta.innerText = now - lastRead;
-                                            // lastRead = now;
-                                            
                                             // display the message 
                                             var value = parseInt(str);
                                             info.msg(value);
@@ -61,29 +59,5 @@ var app = {
         );
     }
 };
-
-var info = {
-    msg: function(msg){
-        this.logConsole(msg);
-        this.logHtml(msg);
-    },
-    console: function(msg){
-        this.logConsole(msg);
-    },
-    error: function(msg){
-        var text = '*: '+msg;
-        this.logConsole(text);
-        this.logHtml(text);
-        //alert(text);
-    },
-    // private
-    logConsole: function(msg){
-        console.log(msg);
-    },
-    logHtml: function(msg){
-        var log = $('#log');
-        log.html(log.html()+"<div>"+msg+"</div>\n");
-    }
-}
 
 app.initialize();
