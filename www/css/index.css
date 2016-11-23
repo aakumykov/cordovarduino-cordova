@@ -9,5 +9,5 @@ BODY {
     padding: 5px;
     border: 3px ridge grey;
     font: 11px sans-serif;
-    overflow: auto;
+    overflow: scroll;
 }

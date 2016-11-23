@@ -15,6 +15,7 @@ var app = {
         var errorCallback = function(message) {
             info.error(message);
         };
+        
         // request permission first 
         serial.requestPermission(
             // if user grants permission 
