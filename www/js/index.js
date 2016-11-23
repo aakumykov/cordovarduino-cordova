@@ -1,10 +1,12 @@
+//'use strict'; // испытать
+
 var app = {
     initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
+
     onDeviceReady: function() {
-        $('#log').width(window.innerWidth-50);
-        $('#log').height(window.innerHeight-50);
+        this.initScreen();
 
         var open = false;
         var str = '';
@@ -57,7 +59,12 @@ var app = {
             // user does not grant permission 
             errorCallback
         );
-    }
+    },
+
+    initScreen: function(){
+        $('#log').width(window.innerWidth-50);
+        $('#log').height(window.innerHeight-50);
+    },
 };
 
 app.initialize();
