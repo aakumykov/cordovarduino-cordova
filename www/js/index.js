@@ -103,17 +103,18 @@ var app = {
 
         window.setInterval(
             function(){
-                self.displayXY({ x: self.touch.x, y: self.touch.y });
+                //self.displayXY({ x: self.touch.x, y: self.touch.y });
+                self.sendXY({ x: self.touch.x, y: self.touch.y });
             },
             100
         );
 
-        window.setInterval(
-            function(){
-                self.sendXY({ x: self.touch.x, y: self.touch.y });
-            },
-            1000
-        );
+        // window.setInterval(
+        //     function(){
+        //         self.sendXY({ x: self.touch.x, y: self.touch.y });
+        //     },
+        //     1000
+        // );
     },
 
     displayXY: function(arg){
@@ -123,13 +124,9 @@ var app = {
     },
 
     sendXY: function(arg){
-        //var message = arg.x+'x'+arg.y;
-        var message = arg.x;
-        
-        //serial.write(arg.x+'x'+arg.y);
-        serial.write('1');
-        
-        info.msg('sendXY('+message+')');
+        var message = arg.x+'x'+arg.y;
+        serial.write(message);
+        //info.msg('sendXY('+message+')');
     },
 };
 

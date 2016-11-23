@@ -1,10 +1,10 @@
 var info = {
     msg: function(msg){
-        this.logConsole(msg);
-        this.logHtml(msg);
+        // this.logConsole(msg);
+        // this.logHtml(msg);
     },
     console: function(msg){
-        this.logConsole(msg);
+        // this.logConsole(msg);
     },
     error: function(msg){
         var text = '*: '+msg;
