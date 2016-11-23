@@ -3,16 +3,12 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
-        var pot = document.getElementById('pot');
-        var delta = document.getElementById('delta');
-        var on = document.getElementById('on');
-        var off = document.getElementById('off');
         var open = false;
         var str = '';
         var lastRead = new Date();
  
         var errorCallback = function(message) {
-            alert('Error: ' + message);
+            info.error(message);
         };
         // request permission first 
         serial.requestPermission(
@@ -63,14 +59,6 @@ var app = {
             // user does not grant permission 
             errorCallback
         );
- 
-        on.onclick = function() {
-            console.log('click');
-            if (open) serial.write('1');
-        };
-        off.onclick = function() {
-            if (open) serial.write('0');
-        }
     }
 };
 
@@ -83,10 +71,10 @@ var info = {
         this.logConsole(msg);
     },
     error: function(msg){
-        var text = 'ERROR: '+msg;
+        var text = '*: '+msg;
         this.logConsole(text);
         this.logHtml(text);
-        alert(text);
+        //alert(text);
     },
     // private
     logConsole: function(msg){
