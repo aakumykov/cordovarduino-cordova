@@ -7,10 +7,14 @@ var app = {
     },
 
     initialize: function() {
+        info.msg('initialize()');
+        
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
     onDeviceReady: function() {
+        info.msg('onDeviceReady()');
+
         this.initScreen();
         this.initTouch();
 
@@ -69,11 +73,15 @@ var app = {
     },
 
     initScreen: function(){
+        info.msg('initScreen()');
+
         $('#area').width(window.innerWidth-50);
         $('#area').height(window.innerHeight-100);
     },
 
     initTouch: function(){
+        info.msg('initTouch()');
+
         var self = this;
 
         $(document.body).on('touchstart', function(ev){
