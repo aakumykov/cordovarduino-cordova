@@ -101,11 +101,8 @@ var app = {
             //info.console('touchmove('+x+','+y+')');
         });
 
-        // window.setInterval(function(){
-        //     info.console(self.touch);
-        // }, 1000);
-
-        window.setInterval(function(){
+        window.setInterval(
+            function(){
                 self.displayXY({ x: self.touch.x, y: self.touch.y });
             },
             100
@@ -116,6 +113,7 @@ var app = {
         //info.console('displayXY('+arg.x+', '+arg.y+')');
         $('#clientX').html(arg.x);
         $('#clientY').html(arg.y);
+        serial.write(arg.x+'x'+arg.y);
     },
 };
 
