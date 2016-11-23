@@ -7,6 +7,7 @@ var app = {
 
     onDeviceReady: function() {
         this.initScreen();
+        this.initTouchEvents();
 
         var open = false;
         var str = '';
@@ -63,8 +64,34 @@ var app = {
     },
 
     initScreen: function(){
-        $('#log').width(window.innerWidth-50);
-        $('#log').height(window.innerHeight-50);
+        $('#area').width(window.innerWidth-50);
+        $('#area').height(window.innerHeight-100);
+    },
+
+    initTouchEvents: function(){
+        var self = this;
+
+        $(document.body).on('touchstart', function(ev){
+            var x = ev.touches[0].clientX;
+            var y = ev.touches[0].clientY;
+            
+            serial.write(x+'x'+y);
+            
+            self.displayXY({
+                x: x,
+                y: y,
+            });
+        });
+    },
+
+    displayXY: function(arg){
+        info.console('displayXY('+arg.x+', '+arg.y+')');
+
+        var x = arg.x;
+        var y = arg.y;
+        
+        $('#clientX').html(x);
+        $('#clientY').html(y);
     },
 };
 

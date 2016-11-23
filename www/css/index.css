@@ -1,7 +1,13 @@
 * { margin:0px; padding: 0px; }
 
 BODY {
+    background-color: steelblue;
+}
+
+#area {
     background-color: skyblue;
+    width:409px;
+    height:409px;
 }
 
 #log { 
@@ -10,4 +16,12 @@ BODY {
     border: 3px ridge grey;
     font: 11px sans-serif;
     overflow: scroll;
+}
+
+#coords {
+    text-align:center;
+    font-size: 32px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
 }
