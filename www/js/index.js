@@ -8,7 +8,7 @@ var app = {
 
     initialize: function() {
         info.msg('initialize()');
-        
+
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
@@ -95,6 +95,7 @@ var app = {
             info.console('touchend('+x+','+y+')');
         });
         $(document.body).on('touchmove', function(ev){
+            ev.preventDefault();
             var x = self.touch.x = ev.touches[0].clientX;
             var y = self.touch.y = ev.touches[0].clientY;
             //info.console('touchmove('+x+','+y+')');
