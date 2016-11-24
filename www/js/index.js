@@ -103,18 +103,18 @@ var app = {
 
         window.setInterval(
             function(){
-                //self.displayXY({ x: self.touch.x, y: self.touch.y });
-                self.sendXY({ x: self.touch.x, y: self.touch.y });
+                self.displayXY({ x: self.touch.x, y: self.touch.y });
+                //serial.write( Math.ceil( Math.random()*1000 ) );
             },
             100
         );
 
-        // window.setInterval(
-        //     function(){
-        //         self.sendXY({ x: self.touch.x, y: self.touch.y });
-        //     },
-        //     1000
-        // );
+        window.setInterval(
+            function(){
+                self.sendXY({ x: self.touch.x, y: self.touch.y });
+            },
+            200
+        );
     },
 
     displayXY: function(arg){
