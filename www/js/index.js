@@ -75,8 +75,8 @@ var app = {
     initScreen: function(){
         info.msg('initScreen()');
 
-        $('#area').width(window.innerWidth-50);
-        $('#area').height(window.innerHeight-100);
+        $('#area').width(window.innerWidth);
+        $('#area').height(window.innerHeight);
     },
 
     initTouch: function(){
@@ -101,6 +101,7 @@ var app = {
             //info.console('touchmove('+x+','+y+')');
         });
 
+        // displayXY
         window.setInterval(
             function(){
                 self.displayXY({ x: self.touch.x, y: self.touch.y });
@@ -109,11 +110,12 @@ var app = {
             100
         );
 
+        // sendXY
         window.setInterval(
             function(){
                 self.sendXY({ x: self.touch.x, y: self.touch.y });
             },
-            200
+            100
         );
     },
 

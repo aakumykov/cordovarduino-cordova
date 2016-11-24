@@ -1,20 +1,15 @@
 * { margin:0px; padding: 0px; }
 
-BODY {
-    background-color: coral;
-}
-
 #area {
-    background-color: limegreen;
-    width:409px;
-    height:409px;
+    background-color: PaleTurquoise;
+    width:100%;
+    height:100%;
 }
 
-#log { 
-    margin: 10px; 
+#log {
     padding: 5px;
     border: 3px ridge grey;
-    font: 11px sans-serif;
+    font: 12px sans-serif;
     overflow: scroll;
 }
 
