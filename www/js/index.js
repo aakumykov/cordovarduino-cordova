@@ -126,7 +126,8 @@ var app = {
     },
 
     sendXY: function(arg){
-        var message = arg.x+'x'+arg.y;
+        //var message = arg.x+'x'+arg.y+';';
+        var message = arg.x+';';
         serial.write(message);
         //info.msg('sendXY('+message+')');
     },
