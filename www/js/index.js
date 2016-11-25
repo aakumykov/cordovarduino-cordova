@@ -101,22 +101,22 @@ var app = {
             //info.console('touchmove('+x+','+y+')');
         });
 
-        // displayXY
+        // displayXY, sendXY
         window.setInterval(
             function(){
                 self.displayXY({ x: self.touch.x, y: self.touch.y });
-                //serial.write( Math.ceil( Math.random()*1000 ) );
+                self.sendXY({ x: self.touch.x, y: self.touch.y });
             },
             100
         );
 
         // sendXY
-        window.setInterval(
-            function(){
-                self.sendXY({ x: self.touch.x, y: self.touch.y });
-            },
-            100
-        );
+        // window.setInterval(
+        //     function(){
+        //         self.sendXY({ x: self.touch.x, y: self.touch.y });
+        //     },
+        //     100
+        // );
     },
 
     displayXY: function(arg){
@@ -126,8 +126,7 @@ var app = {
     },
 
     sendXY: function(arg){
-        //var message = arg.x+'x'+arg.y+';';
-        var message = arg.x+';';
+        var message = arg.x+'x'+arg.y+';';
         serial.write(message);
         //info.msg('sendXY('+message+')');
     },
