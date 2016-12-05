@@ -21,3 +21,8 @@
     width: 100%;
     color: DarkBlue  ;
 }
+
+#startButton {
+    width: 200px;
+    height: 100px;
+}
