@@ -123,7 +123,7 @@ var app = {
         info.msg('app.addStartButton()');
         $(document.body).append( $("<button id='startButton'>Start</button>") );
         $('#startButton').on('click', function(){
-            serial.write('start');
+            serial.write('start;');
         });
     },
 
