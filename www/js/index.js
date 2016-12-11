@@ -18,6 +18,7 @@ var app = {
         //this.initScreen();
         //this.initTouch();
         this.addStartButton();
+        this.addStopButton();
 
         //var open = false;
         var str = '';
@@ -121,9 +122,17 @@ var app = {
 
     addStartButton: function(){
         info.msg('app.addStartButton()');
-        $(document.body).append( $("<button id='startButton'>Start</button>") );
+        $(document.body).append( $("<button id='startStopButton'>Start</button>") );
         $('#startButton').on('click', function(){
             serial.write('start;');
+        });
+    },
+
+    addStopButton: function(){
+        info.msg('app.addStartButton()');
+        $(document.body).append( $("<button id='startStopButton'>Stop</button>") );
+        $('#startButton').on('click', function(){
+            serial.write('stop;');
         });
     },
 
