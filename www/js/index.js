@@ -15,12 +15,13 @@ var app = {
     onDeviceReady: function() {
         info.msg('onDeviceReady()');
 
-        this.initScreen();
-        this.initTouch();
+        //this.initScreen();
+        //this.initTouch();
+        this.addStartButton();
+        this.addStopButton();
 
-        var open = false;
+        //var open = false;
         var str = '';
-        var lastRead = new Date();
  
         var errorCallback = function(message) {
             info.error(message);
@@ -35,7 +36,7 @@ var app = {
                     {baudRate: 9600},
                     // if port is succesfuly opened 
                     function(successMessage) {
-                        open = true;
+                        //open = true;
                         // register the read callback 
                         serial.registerReadCallback(
                             function success(data){
@@ -117,6 +118,22 @@ var app = {
         //     },
         //     100
         // );
+    },
+
+    addStartButton: function(){
+        info.msg('app.addStartButton()');
+        $(document.body).append( $("<button id='startStopButton'>Start</button>") );
+        $('#startButton').on('click', function(){
+            serial.write('start;');
+        });
+    },
+
+    addStopButton: function(){
+        info.msg('app.addStartButton()');
+        $(document.body).append( $("<button id='startStopButton'>Stop</button>") );
+        $('#startButton').on('click', function(){
+            serial.write('stop;');
+        });
     },
 
     displayXY: function(arg){
